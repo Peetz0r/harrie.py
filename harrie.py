@@ -2,7 +2,8 @@
 
 import os, sys, re
 
-Q42FILE = 'HaagsTranslator/src/HaagsTranslator/Translator.cs'
+Q42FILE = './HaagsTranslator/src/HaagsTranslator/Translator.cs'
+Q42FILE = os.path.realpath(os.path.join(os.path.dirname(os.path.realpath(__file__)), Q42FILE))
 
 reRe = re.compile(r'new *\[\] *\{ *"([^"]+)" *, *"([^"]+)" *\}')
 reBackref = re.compile(r'\$([0-9]+)')
@@ -16,8 +17,6 @@ reList = []
 
 with open(Q42FILE) as f:
   for line in f.readlines():
-    # ~ print('='*42)
-    # ~ print(line)
     match = reRe.search(line)
     if match:
       backref = reBackref.sub(r'\\\1', match.group(2))
