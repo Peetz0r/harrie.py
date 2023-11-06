@@ -1,0 +1,3 @@
+[submodule "HaagsTranslator"]
+	path = HaagsTranslator
+	url = https://github.com/nhalink/HaagsTranslator.git
